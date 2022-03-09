@@ -1,0 +1,172 @@
+﻿@page
+@model AccountingSystem.Pages.Customers.EditCustomer2Model
+@{
+}
+<form method="post">
+    <div class="modal-content hold-transition login-page">
+        <div class="modal-header" ;color:white;text-align:center">
+            <h5 class="modal-title w-100 text-center">Customers</h5>
+        </div>
+        <div class="modal-body">
+            @if (!Model.Success)
+            {
+                <div class="alert-danger text-center">
+                    @Model.Message
+                </div>
+            }
+            <div class="row">
+                <div class="col-sm-2">
+                    Name
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.Name" class="form-control" placeholder="Name" />
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    Bank
+                </div>
+                <div class="col-sm-4">
+                    <select class="form-control" asp-for="Customer.Bank">
+                        <option selected>Select Bank</option>
+                        @foreach (var bank in Model.Banks)
+                        {
+                            <option value="@bank.Name">@bank.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    Address
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.Address" class="form-control" placeholder="Address" />
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    Email
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.Email" class="form-control" placeholder="Email" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    Street 1
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.Street1" class="form-control" placeholder="Street 1" />
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    Street 2
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.Street2" class="form-control" placeholder="Street 2" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    City
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.City" class="form-control" placeholder="City" />
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    Country
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.Country" class="form-control" placeholder="Country" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    Mobile
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.Mobile" class="form-control" placeholder="Mobile" />
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    Phone No
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.PhoneNo" class="form-control" placeholder="Phone No" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    Purchase Terms
+                </div>
+                <div class="col-sm-4">
+                    <select class="form-control" asp-for="Customer.PurchasePaymentTerms">
+                        <option selected>Select Purchase terms</option>
+                        @foreach (var term in Model.PaymentTerms)
+                        {
+                            <option value="@term.Term">@term.Term</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    Sales Terms
+                </div>
+                <div class="col-sm-4">
+                    <select class="form-control" asp-for="Customer.SalesPaymentTerms">
+                        <option selected>Select Sales terms</option>
+                        @foreach (var term in Model.PaymentTerms)
+                        {
+                            <option value="@term.Term">@term.Term</option>
+                        }
+                    </select>
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-sm-2">
+                    Account Receivable
+                </div>
+                <div class="col-sm-4">
+                    <select class="form-control" asp-for="Customer.ARGlAccount">
+                        <option selected>Select Account Receivable</option>
+                        @foreach (var account in Model.RAccounts)
+                        {
+                            <option value="@account.Name">@account.Code @account.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-4">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    Notes
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <input type="text" asp-for="Customer.Notes" class="form-control" placeholder="Notes" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer" style="background-color:#467fd0;color:white;text-align:center">
+            <button type="submit" class="btn btn-success">SAVE</button>
+            <a class="btn btn-secondary" asp-page="./ListCustomer">BACK</a>
+        </div>
+    </div>
+</form>

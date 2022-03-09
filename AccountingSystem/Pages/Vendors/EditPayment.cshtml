@@ -1,0 +1,106 @@
+﻿@page
+@model AccountingSystem.Pages.Vendors.EditPaymentModel
+@{
+}
+<form method="post">
+    <div class="modal-content hold-transition login-page">
+        <div class="modal-header" ;color:white;text-align:center">
+            <h5 class="modal-title w-100 text-center">Payment Form</h5>
+        </div>
+        <div class="modal-body">
+            @if (!Model.Success)
+            {
+                <div class="alert-danger text-center">
+                    @Model.Message
+                </div>
+            }
+            <div class="row">
+                <div class="col-sm-2 m-1">
+                    <div class="row">
+                        <label for="">Customer</label>
+                    </div><br>
+                    <div class="row">
+                        <label for="">Destination Account</label>
+                    </div><br>
+                    <div class="row">
+                        <label for="">Is Internal Transfer</label>
+                    </div><br>
+                    <div class="row">
+                        <label for="">Amount</label>
+                    </div><br>
+                    <div class="row">
+                        <label for="">Date</label>
+                    </div><br>
+                    <div class="row">
+                        <label for="">Memo</label>
+                    </div><br>
+                </div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <select class="form-control" asp-for="Payment.Vender">
+                            <option selected>Select Vender</option>
+                            @foreach (var term in Model.Venders)
+                            {
+                                <option value="@term.Name">@term.Name</option>
+                            }
+                        </select>
+                    </div><br>
+                    <div class="row">
+                        <select class="form-control" asp-for="Payment.GlAccount">
+                            <option selected>Select Receivable</option>
+                            @foreach (var account in Model.Accounts)
+                            {
+                                <option value="@account.Code">@account.Code @account.Name</option>
+                            }
+                        </select>
+                    </div><br>
+                    <div class="row checkbox-inline">
+                        <INPUT type="radio" asp-for="Payment.IsInternalTransfer" value="TRUE">
+                    </div><br>
+                    <div class="row">
+                        <input type="text" asp-for="Payment.Amount" class="form-control" placeholder="amount" />
+                    </div><br>
+                    <div class="row">
+                        <input type="date" asp-for="Payment.Date" class="form-control" placeholder="" />
+                    </div><br>
+                    <div class="row">
+                        <input type="text" asp-for="Payment.Memo" class="form-control" placeholder="memo.." />
+                    </div><br>
+                </div>
+                <div class="col-sm-2 m-1">
+                    <div class="row">
+                        <label for="">Journal</label>
+                    </div><br>
+                    <div class="row">
+                        <label for="">Recipient Bank Account</label>
+                    </div><br>
+                </div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <select class="form-control" asp-for="Payment.Journal">
+                            <option selected>Select Journal</option>
+                            @foreach (var journal in Model.Journals)
+                            {
+                                <option value="@journal.Name"> @journal.Name</option>
+                            }
+                        </select>
+                    </div><br>
+                    <div class="row">
+                        <select class="form-control" asp-for="Payment.BankAccount">
+                            <option selected>Select Recipient Bank</option>
+                            @foreach (var account in Model.Accounts)
+                            {
+                                <option value="@account.Code">@account.Code @account.Name</option>
+                            }
+                        </select>
+                    </div><br>
+                </div>
+            </div>
+            <div class="card-footer" style="text-align:right">
+                <button id="btn-save" class="btn btn-success">SAVE</button>
+                <a class="btn btn-secondary" asp-page="./ListPayment">BACK</a>
+            </div>
+        </div>
+    </div>
+</form>
+    

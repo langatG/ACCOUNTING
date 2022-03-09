@@ -1,0 +1,117 @@
+﻿@page
+@model AccountingSystem.Pages.Customers.EditCustomerProducts2Model
+@{
+}
+<form method="post">
+    <div class="container-fluid">
+        <div class="card border-primary mt-3">
+            <div class="card-header border-primary"><strong>Products</strong></div>
+            <div class="card-body">
+                @if (!Model.Success)
+                {
+                    <div class="alert-danger text-center">
+                        @Model.Message
+                    </div>
+                }
+
+            <div class="row">
+                <div class="col-sm-2">
+                    Name
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Product.Name" class="form-control" placeholder="Name" />
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    Internal Reference
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" asp-for="Product.Ref" class="form-control" placeholder="Ref.." />
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        Type
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control" asp-for="Product.Type">
+                            <option selected>Select Type</option>
+                            @foreach (var type in Model.ProductTypes)
+                            {
+                                <option value="@type">@type</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        Category
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control" asp-for="Product.Category">
+                            <option selected>Select Category</option>
+                            @foreach (var category1 in Model.ProductCategories)
+                            {
+                                <option value="@category1.Name">@category1.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div><br />
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        Price
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <input type="text" asp-for="Product.Price" class="form-control" placeholder="Price" />
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        Customer Tax
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control" asp-for="Product.CustomerTax">
+                            <option selected>Select Tax</option>
+                            @foreach (var tax1 in Model.Taxes)
+                            {
+                                <option value="@tax1.Name">@tax1.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        Account Receivable
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" asp-for="Product.ARGlAccount">
+                            <option selected>Select Receivable </option>
+                            @foreach (var account in Model.Accounts)
+                            {
+                                <option value="@account.Name">@account.Code @account.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div><br />
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        Notes
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <input type="text" asp-for="Product.Notes" class="form-control" placeholder="Notes" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color:#467fd0;color:white;text-align:center">
+                <button type="submit" class="btn btn-success">SAVE</button>
+                <a class="btn btn-secondary" asp-page="./ListCustomerProducts">BACK</a>
+            </div>
+        </div>
+    </div>
+</form>
